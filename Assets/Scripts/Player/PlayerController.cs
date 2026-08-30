@@ -58,22 +58,22 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAlive) return;
 
-        Vector2 playerMovement = new Vector2(moveInput.x * moveSpeed, myRb.velocity.y);
-        myRb.velocity = playerMovement;
+        Vector2 playerMovement = new Vector2(moveInput.x * moveSpeed, myRb.linearVelocity.y);
+        myRb.linearVelocity = playerMovement;
         if (onGround())
         {
-            animator.SetFloat("isRunning", Mathf.Abs(myRb.velocity.x));
+            animator.SetFloat("isRunning", Mathf.Abs(myRb.linearVelocity.x));
         }
         flipSprite();
     }
 
     void flipSprite()
     {
-        bool playerHasHorizontalSpeed = Mathf.Abs(myRb.velocity.x) > Mathf.Epsilon;
+        bool playerHasHorizontalSpeed = Mathf.Abs(myRb.linearVelocity.x) > Mathf.Epsilon;
 
         if (playerHasHorizontalSpeed)
         {
-            transform.localScale = new Vector2(Mathf.Sign(myRb.velocity.x), 1f);
+            transform.localScale = new Vector2(Mathf.Sign(myRb.linearVelocity.x), 1f);
         }
     }
 
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
         if (value.isPressed)
         {
             AudioManager.instance.PlaySFX(8);
-            myRb.velocity = new Vector2(myRb.velocity.x, jumpSpeed);
+            myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, jumpSpeed);
             animator.SetTrigger("Jump");
         }
     }
@@ -103,10 +103,10 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        Vector2 climbVelocity = new Vector2(myRb.velocity.x, moveInput.y * climbSpeed);
-        myRb.velocity = climbVelocity;
+        Vector2 climbVelocity = new Vector2(myRb.linearVelocity.x, moveInput.y * climbSpeed);
+        myRb.linearVelocity = climbVelocity;
 
-        bool playerHasVerticalSpeed = Mathf.Abs(myRb.velocity.y) > Mathf.Epsilon;
+        bool playerHasVerticalSpeed = Mathf.Abs(myRb.linearVelocity.y) > Mathf.Epsilon;
         animator.SetBool("isClimbing", playerHasVerticalSpeed);
         animator.SetFloat("isRunning", 0);
         myRb.gravityScale = 0;
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
         if (capsuleCollider2D.IsTouchingLayers(LayerMask.GetMask("Hazard", "Enemy")))
         {
             isAlive = false;
-            myRb.velocity = Vector2.zero;
+            myRb.linearVelocity = Vector2.zero;
             myRb.gravityScale = 10;
             // myRb.bodyType = RigidbodyType2D.Dynamic;
             animator.SetTrigger("Death");
@@ -167,7 +167,7 @@ public class PlayerController : MonoBehaviour
     public void Jump()
     {
         if (!isAlive || !onGround()) return;
-        myRb.velocity = new Vector2(myRb.velocity.x, jumpSpeed); // Perform jump
+        myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, jumpSpeed); // Perform jump
         AudioManager.instance.PlaySFX(8);
         animator.SetTrigger("Jump");
     }
