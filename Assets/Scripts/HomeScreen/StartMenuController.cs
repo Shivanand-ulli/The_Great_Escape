@@ -21,7 +21,7 @@ public class StartMenuController : MonoBehaviour
 
     public void sfxButtonSound()
     {
-        AudioManager.instance.PlaySFX(1);
+        SoundManager.Instance.PlaySFX(Sfx.ButtonClick);
     }
 
     public void nextscene(int i)

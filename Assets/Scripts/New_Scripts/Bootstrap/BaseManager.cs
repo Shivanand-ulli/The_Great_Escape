@@ -61,7 +61,7 @@ public abstract class BaseManager : MonoBehaviour,ICleanUpManager
 public abstract class SingletonManager<T> : BaseManager where T : SingletonManager<T>
 {
     protected static T instance;
-    public static T Instance = instance;
+    public static T Instance => instance;
 
     protected override void Awake()
     {
@@ -82,7 +82,7 @@ public abstract class SingletonManager<T> : BaseManager where T : SingletonManag
         {
             instance = null;
         }
-        
-        base.Awake();
+
+        base.OnDestroy();
     }
-} 
+}

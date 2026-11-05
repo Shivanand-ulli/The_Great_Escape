@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour
             // coinSparkelEffect.Play();
             CoinManager.instance.CollectCoin();
             CoinManager.instance.coinScore();
-            AudioManager.instance.PlaySFX(0);
+            SoundManager.Instance.PlaySFX(Sfx.Coin);
             coinVfx.Play();
             transform.GetChild(0).gameObject.SetActive(false);
         }

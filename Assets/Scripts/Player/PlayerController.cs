@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
 
         if (value.isPressed)
         {
-            AudioManager.instance.PlaySFX(8);
+            SoundManager.Instance.PlaySFX(Sfx.Jump);
             myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, jumpSpeed);
             animator.SetTrigger("Jump");
         }
@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
             myRb.gravityScale = 10;
             // myRb.bodyType = RigidbodyType2D.Dynamic;
             animator.SetTrigger("Death");
-            AudioManager.instance.PlaySFX(5);
+            SoundManager.Instance.PlaySFX(Sfx.EnemyDeath);
             StartCoroutine(CallCoroutine());
         }
     }
@@ -168,7 +168,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAlive || !onGround()) return;
         myRb.linearVelocity = new Vector2(myRb.linearVelocity.x, jumpSpeed); // Perform jump
-        AudioManager.instance.PlaySFX(8);
+        SoundManager.Instance.PlaySFX(Sfx.Jump);
         animator.SetTrigger("Jump");
     }
 

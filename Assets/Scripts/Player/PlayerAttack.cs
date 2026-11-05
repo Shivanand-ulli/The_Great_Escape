@@ -21,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("Attack");
-            AudioManager.instance.PlaySFX(6);  
+            SoundManager.Instance.PlaySFX(Sfx.Sword);  
         }
     }
 
@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
         if (value.isPressed)
         {
             animator.SetTrigger("Attack");
-            AudioManager.instance.PlaySFX(6);
+            SoundManager.Instance.PlaySFX(Sfx.Sword);
         }
     }
 
@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     enemy.speed = 0;
                     enemy.myBoxCollider.enabled = false;
-                    AudioManager.instance.PlaySFX(5);
+                    SoundManager.Instance.PlaySFX(Sfx.EnemyDeath);
                     enemy.vfx1();
                 }
 
@@ -78,6 +78,6 @@ public class PlayerAttack : MonoBehaviour
 
     // public void playSfx()
     // {
-    //     AudioManager.instance.PlaySFX(5);
+    //     SoundManager.Instance.PlaySFX(SfxName.EnemyDeath);
     // }
 }

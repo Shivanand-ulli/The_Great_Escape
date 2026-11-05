@@ -26,7 +26,7 @@ public class Key : MonoBehaviour
             keyManager.PopUp();
             print("Key PickedUp");
             keyVfx.Play();
-            AudioManager.instance.PlaySFX(9);
+            SoundManager.Instance.PlaySFX(Sfx.Collect);
             transform.GetChild(0).gameObject.SetActive(false);
             myBoxCollider.enabled = false; 
             exit.showPannel();
