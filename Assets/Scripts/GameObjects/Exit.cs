@@ -35,7 +35,7 @@ public class Exit : MonoBehaviour
         totalCoins += CoinManager.instance.coinPoints;
         PlayerPrefs.SetInt("TotalCoins", totalCoins);
         PlayerPrefs.Save();
-        AudioManager.instance.PlaySFX(2);
+        SoundManager.Instance.PlaySFX(Sfx.LevelWin);
         // keyManager.textDisappear();
         UIManager.instance.ShowWinPanel();
     }

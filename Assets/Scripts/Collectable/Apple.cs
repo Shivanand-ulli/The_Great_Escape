@@ -22,7 +22,7 @@ public class Apple : MonoBehaviour
             {
                 coinManager.HideCoins();
                 appleVfx.Play();
-                AudioManager.instance.PlaySFX(9); 
+                SoundManager.Instance.PlaySFX(Sfx.Collect); 
                 transform.GetChild(0).gameObject.SetActive(false); 
                 circleCollider2D.enabled = false;
             }

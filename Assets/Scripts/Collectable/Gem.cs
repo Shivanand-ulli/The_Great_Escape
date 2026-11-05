@@ -17,7 +17,7 @@ public class Gem : MonoBehaviour
         {
             GemController.instance.CollectGem();
             gemParticle.Play();
-            AudioManager.instance.PlaySFX(9);
+            SoundManager.Instance.PlaySFX(Sfx.Collect);
             transform.GetChild(0).gameObject.SetActive(false);
             boxCollider2D.enabled = false;
         }

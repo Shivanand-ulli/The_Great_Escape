@@ -61,7 +61,7 @@ public class GameSessionController : MonoBehaviour
         IEnumerator play()
         {
             yield return new WaitForSeconds(0.5f);
-            // AudioManager.instance.PlaySFX(3);
+            // SoundManager.Instance.PlaySFX(SfxName.OpenNewLevel);
         }
 
 
@@ -98,7 +98,7 @@ public class GameSessionController : MonoBehaviour
         {
             UIManager.instance.ShowLoosePanel();
             coinsCollected.text = CoinManager.instance.coinPoints.ToString();
-            AudioManager.instance.PlaySFX(4);
+            SoundManager.Instance.PlaySFX(Sfx.PlayerLose);
         }
 
     }

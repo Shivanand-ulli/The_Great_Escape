@@ -135,7 +135,7 @@ public class UIManager : MonoBehaviour
 
     public void playButtonSound()
     {
-        AudioManager.instance.PlaySFX(1);
+        SoundManager.Instance.PlaySFX(Sfx.ButtonClick);
     }
 
 
