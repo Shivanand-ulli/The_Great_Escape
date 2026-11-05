@@ -88,6 +88,20 @@ public class SoundManager : SingletonManager<SoundManager>
         if (musicSource != null) musicSource.Stop();
     }
 
+    /// <summary>Pauses music and SFX playback (keeps position). Does not change mute state.</summary>
+    public void PauseAudio()
+    {
+        if (musicSource != null) musicSource.Pause();
+        if (sfxSource != null) sfxSource.Pause();
+    }
+
+    /// <summary>Resumes music and SFX paused by PauseAudio.</summary>
+    public void ResumeAudio()
+    {
+        if (musicSource != null) musicSource.UnPause();
+        if (sfxSource != null) sfxSource.UnPause();
+    }
+
     public void SetMusicMuted(bool muted)
     {
         musicMuted = muted;
