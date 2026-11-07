@@ -12,5 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a8c9e1b40803e43be9083bb59595d7, type: 3}
   m_Name: SO_PopupDatabase
   m_EditorClassIdentifier: Assembly-CSharp::PopupDatabase
-  popupPrefabs: []
-  popupBackgrounds: []
+  popupPrefabs:
+  - {fileID: 3460682506622338659, guid: e1ecfdcb90e4b76428600a0a5ccf5f4d, type: 3}
+  - {fileID: 1980454173045321960, guid: 8fa406b42abe50749bfaec73afc3532f, type: 3}
+  - {fileID: 1135339126655462433, guid: caaae2bdfa1fa5f48b5144b6f5b22397, type: 3}
+  - {fileID: 7256520113215776781, guid: 762827b7896b66c4fbee04e0266bc16f, type: 3}
+  - {fileID: 2722965764503763169, guid: b36db1840ca1b9a4492ea7ed93ab32a5, type: 3}
+  - {fileID: 8190735682648504692, guid: 33b02e50d6d448049b0ef1280850f15e, type: 3}
+  popupBackgrounds:
+  - tag: Default
+    backgroundPrefab: {fileID: 4950547687903794698, guid: b7c9c053038dd1e4fb57c89f08b8f2dc, type: 3}
