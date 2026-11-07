@@ -21,6 +21,9 @@ public class PlayerDataManager : SingletonManager<PlayerDataManager>
 
     public PlayerData Data => data;
 
+    /// <summary>Level being played, set by level select and kept up to date by LevelManager (1-based). 0 = none. Not saved to disk.</summary>
+    public int CurrentLevel { get; set; }
+
     protected override void OnInitialize()
     {
         filePath = Path.Combine(Application.persistentDataPath, fileName);
