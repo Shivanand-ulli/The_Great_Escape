@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "THE GREAT ESCAPE.sln"
+    "dotnet.defaultSolution": "The_Great_Escape.slnx"
 }
