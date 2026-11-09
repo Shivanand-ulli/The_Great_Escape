@@ -1,13 +1,12 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>Header widgets: player name and coin/gem/key counts, kept in sync with PlayerData.</summary>
 public class MetaHeaderPanelUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text playerNameText;
-    [SerializeField] private TMP_Text coinsText;
-    [SerializeField] private TMP_Text gemsText;
-    [SerializeField] private TMP_Text keysText;
+    [SerializeField] private TextMeshProUGUI coinsText;
+    [SerializeField] private Button SettingsButton;
 
     private PlayerDataManager dataManager;
 
@@ -18,21 +17,28 @@ public class MetaHeaderPanelUI : MonoBehaviour
 
         dataManager.OnDataChanged += Refresh;
         Refresh(dataManager.Data);
+
+        SettingsButton.onClick.AddListener(OnSettingsButtonClicked);
     }
 
     private void OnDisable()
     {
         if (dataManager != null) dataManager.OnDataChanged -= Refresh;
         dataManager = null;
+        SettingsButton.onClick.RemoveListener(OnSettingsButtonClicked);
     }
 
     private void Refresh(PlayerData data)
     {
         if (data == null) return;
-
-        if (playerNameText != null) playerNameText.text = data.playerName;
         if (coinsText != null) coinsText.text = data.coins.ToString();
-        if (gemsText != null) gemsText.text = data.gems.ToString();
-        if (keysText != null) keysText.text = data.keys.ToString();
+    }
+
+    private void OnSettingsButtonClicked()
+    {
+        if(PopupManager.Instance != null)
+        {
+            PopupManager.Instance.ShowPopup<SettingsPopup>();
+        }
     }
 }

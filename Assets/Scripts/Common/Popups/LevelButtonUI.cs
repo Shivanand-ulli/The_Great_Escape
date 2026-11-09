@@ -15,7 +15,7 @@ public enum LevelStatus
 public class LevelButtonUI : MonoBehaviour
 {
     [SerializeField] private Button button;
-    [SerializeField] private TMP_Text levelNumberText;
+    [SerializeField] private TextMeshProUGUI levelNumberText;
 
     [Header("Status Sprites")]
     [Tooltip("Image that shows the status sprite. Leave empty to use the Image on this button.")]

@@ -12,6 +12,7 @@ public class LevelSelectionPopup : PopupBase
     [Header("UI References")]
     [SerializeField] private RectTransform levelGridContainer;
     [SerializeField] private LevelButtonUI levelButtonPrefab;
+    [SerializeField] private Button CloseButton;
 
     [Header("Pagination")]
     [Tooltip("How many level buttons fit in the grid at once.")]
@@ -40,6 +41,16 @@ public class LevelSelectionPopup : PopupBase
     private int totalPages;
     private int currentPage;
     private bool isLoadingGame;
+
+    private void OnEnable()
+    {
+        CloseButton.onClick.AddListener(OnCloseButtonClicked);
+    }
+
+    private void OnDisable()
+    {
+        CloseButton.onClick.RemoveListener(OnCloseButtonClicked);
+    }
 
     protected override void OnInit()
     {
@@ -166,7 +177,7 @@ public class LevelSelectionPopup : PopupBase
     // Remember which level was picked, then open the game scene. LevelManager starts that level there.
     private void HandleLevelSelected(int levelNumber)
     {
-        if (isLoadingGame) return; // ignore double taps
+        if (isLoadingGame) return;
         isLoadingGame = true;
 
         if (PlayerDataManager.Instance != null)
@@ -176,6 +187,13 @@ public class LevelSelectionPopup : PopupBase
 
         OnLevelSelected?.Invoke(levelNumber);
 
+        Close();
+
         SceneManager.LoadScene(gameSceneName);
+    }
+    
+    private void OnCloseButtonClicked()
+    {
+        Close();
     }
 }

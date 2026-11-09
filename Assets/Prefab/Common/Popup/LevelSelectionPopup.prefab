@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: 48231155662319011}
   - component: {fileID: 2963289381405942258}
   - component: {fileID: 6583564072354073753}
+  - component: {fileID: 6262127793622598898}
   m_Layer: 5
   m_Name: LevelSelectionPopup
   m_TagString: Untagged
@@ -1069,6 +1070,7 @@ MonoBehaviour:
   levelDataCollection: {fileID: 11400000, guid: 9538b6b7cbe1121429b24e34c8a42116, type: 2}
   levelGridContainer: {fileID: 8436027384095986325}
   levelButtonPrefab: {fileID: 4757606616913683571, guid: d02e3a51aa11c5941989c81078b1d0fb, type: 3}
+  CloseButton: {fileID: 7521449062546510681}
   levelsPerPage: 20
   nextPageButton: {fileID: 3551034392714518450}
   prevPageButton: {fileID: 2975181589353640609}
@@ -1076,6 +1078,24 @@ MonoBehaviour:
   dotPrefab: {fileID: 6774758100447278000, guid: da22c4f056804c5428e3eaf6d401b26e, type: 3}
   activeDotSprite: {fileID: -4826659188085645931, guid: 0b34c4dcc97789744b42a806a60ddffa, type: 3}
   inactiveDotSprite: {fileID: -2052096668300458465, guid: 36301937ba155ff47ad20b0679fd0e1a, type: 3}
+  gameSceneName: Game
+--- !u!114 &6262127793622598898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7256520113215776781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &7817808947352363832
 GameObject:
   m_ObjectHideFlags: 0
