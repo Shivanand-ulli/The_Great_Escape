@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: LevelDataCollection
   m_EditorClassIdentifier: 
   levels:
-  - levelId: 
+  - levelId: 1
     levelName: 
     isActive: 1
-    levelPrefab: {fileID: 0}
+    levelPrefab: {fileID: 2291795953691649986, guid: b1bbccb6380f772439d384c74f3761af, type: 3}
+  - levelId: 2
+    levelName: 
+    isActive: 1
+    levelPrefab: {fileID: 2291795953691649986, guid: b1bbccb6380f772439d384c74f3761af, type: 3}
