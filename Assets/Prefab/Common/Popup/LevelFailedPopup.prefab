@@ -57,7 +57,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -88,11 +88,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 8969885857264641075}
   isShowBg: 1
-  backgroundTag: 
+  backgroundTag: Default
   useCloseAnimation: 0
   animationDuration: 0.5
   hiddenScale: {x: 0.8, y: 0.8, z: 1}
   shownScale: {x: 1, y: 1, z: 1}
+  restartButton: {fileID: 2192595892252911464}
+  homeButton: {fileID: 5318102627023267541}
+  levelText: {fileID: 0}
+  coinCount: {fileID: 2201395893785674474}
+  homeSceneName: Meta
 --- !u!1 &1153723601679662455
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,7 +186,6 @@ GameObject:
   - component: {fileID: 9172495886983659565}
   - component: {fileID: 4324885612657176540}
   - component: {fileID: 5318102627023267541}
-  - component: {fileID: 4539318863913496696}
   m_Layer: 5
   m_Name: Home
   m_TagString: Untagged
@@ -291,47 +295,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4539318863913496696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255542406360887413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: onExit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1135339126655462433}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1280235272400066135
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +845,6 @@ GameObject:
   - component: {fileID: 904939382230927210}
   - component: {fileID: 6162529800120744217}
   - component: {fileID: 2192595892252911464}
-  - component: {fileID: 2732335606315576596}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -992,35 +954,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2732335606315576596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6372513166953309879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 3
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: Retry
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &6724335236035760392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,7 +966,7 @@ GameObject:
   - component: {fileID: 5591183643584910029}
   - component: {fileID: 2201395893785674474}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: CoinCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

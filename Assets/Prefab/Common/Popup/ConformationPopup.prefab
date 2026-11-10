@@ -224,7 +224,6 @@ GameObject:
   - component: {fileID: 3398895639664404655}
   - component: {fileID: 7747670028457863946}
   - component: {fileID: 9122437047966081029}
-  - component: {fileID: 5810709042779392947}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -334,47 +333,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5810709042779392947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2699226265233936513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
-          m_MethodName: Quit
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
-          m_MethodName: sfxButtonSound
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &3460682506622338659
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +345,7 @@ GameObject:
   - component: {fileID: 8097322141978620434}
   - component: {fileID: 5132726216015225889}
   - component: {fileID: 1802585739540429309}
+  - component: {fileID: 64666049753906723}
   m_Layer: 5
   m_Name: ConformationPopup
   m_TagString: Untagged
@@ -432,7 +391,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -463,11 +422,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1979280459366498040}
   isShowBg: 1
-  backgroundTag: 
+  backgroundTag: Default
   useCloseAnimation: 0
   animationDuration: 0.5
   hiddenScale: {x: 0.8, y: 0.8, z: 1}
   shownScale: {x: 1, y: 1, z: 1}
+  yesButton: {fileID: 9122437047966081029}
+  noButton: {fileID: 6871760331275890368}
+  homeSceneName: Meta
+--- !u!114 &64666049753906723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460682506622338659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &3560626821564501146
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +770,6 @@ GameObject:
   - component: {fileID: 5832052831909100691}
   - component: {fileID: 6182214374207770729}
   - component: {fileID: 6871760331275890368}
-  - component: {fileID: 9190502165510277638}
   m_Layer: 5
   m_Name: No
   m_TagString: Untagged
@@ -901,47 +879,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &9190502165510277638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6334028616620892481}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3460682506622338659}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: StartMenuController, Assembly-CSharp
-          m_MethodName: sfxButtonSound
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &7441710048742002761
 GameObject:
   m_ObjectHideFlags: 0

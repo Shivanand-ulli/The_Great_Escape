@@ -262,15 +262,17 @@ public class PopupManager : SingletonManager<PopupManager>
         int count = popups.Count;
         Debug.Log($"Closing all {count} popup(s).");
 
-        foreach (var popup in popups)
+        // Work on a copy and clear first: closing a popup can remove it from the list.
+        List<PopupBase> toClose = new List<PopupBase>(popups);
+        popups.Clear();
+
+        foreach (var popup in toClose)
         {
             if (popup != null)
             {
                 popup.Close();
             }
         }
-
-        popups.Clear();
     }
 
     // ============================
