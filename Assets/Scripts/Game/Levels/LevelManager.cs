@@ -21,11 +21,13 @@ public class LevelManager : MonoBehaviour
     [Tooltip("Used only if PlayerDataManager has no current level and no saved progress.")]
     [SerializeField, Min(1)] private int fallbackLevel = 1;
 
-    public event Action<int> OnLevelStarted;
-    public event Action<int> OnLevelCompleted;
-    public event Action<int> OnLevelFailed;
+    // Static so UI that exists before LevelManager.Awake can subscribe safely (LevelManager.Instance
+    // can still be null at that point). Always unsubscribe in OnDisable/OnDestroy.
+    public static event Action<int> OnLevelStarted;
+    public static event Action<int> OnLevelCompleted;
+    public static event Action<int> OnLevelFailed;
     /// <summary>Fired when LoadNextLevel is called after the last active level.</summary>
-    public event Action OnAllLevelsCompleted;
+    public static event Action OnAllLevelsCompleted;
 
     private GameObject currentLevelInstance;
     private int currentLevelNumber;
@@ -141,6 +143,9 @@ public class LevelManager : MonoBehaviour
             OnAllLevelsCompleted?.Invoke();
             return false;
         }
+
+        // If an inactive level was skipped, make sure the level we jump to is unlocked.
+        if (PlayerDataManager.Instance != null) PlayerDataManager.Instance.UnlockLevel(next);
 
         return StartLevel(next);
     }
