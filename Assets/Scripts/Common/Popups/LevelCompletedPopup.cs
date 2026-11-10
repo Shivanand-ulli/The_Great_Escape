@@ -46,18 +46,26 @@ public class LevelCompletedPopup : PopupBase
     private void OnNextClicked()
     {
         PlayClick();
-        if (LevelManager.Instance != null && LevelManager.Instance.LoadNextLevel())
+
+        // Natural break before gameplay starts again: Poki may show an ad here.
+        PokiManager.CommercialBreak(() =>
         {
-            Close();
-        }
+            if (LevelManager.Instance != null && LevelManager.Instance.LoadNextLevel())
+            {
+                Close();
+            }
+        });
     }
 
     private void OnRestartClicked()
     {
         PlayClick();
 
-        if (LevelManager.Instance != null) LevelManager.Instance.RestartLevel();
-        Close();
+        PokiManager.CommercialBreak(() =>
+        {
+            if (LevelManager.Instance != null) LevelManager.Instance.RestartLevel();
+            Close();
+        });
     }
 
     private void OnHomeClicked()

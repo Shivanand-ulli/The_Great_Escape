@@ -70,17 +70,21 @@ public class PausePopup : PopupBase
     {
         PlayClick();
 
-        // StartLevel resets time scale and audio, so the game runs normally again.
-        if (LevelManager.Instance != null)
+        // Natural break before gameplay starts again: Poki may show an ad here.
+        PokiManager.CommercialBreak(() =>
         {
-            LevelManager.Instance.RestartLevel();
-        }
-        else if (CoreGameManager.Instance != null)
-        {
-            CoreGameManager.Instance.ResumeGame();
-        }
+            // StartLevel resets time scale and audio, so the game runs normally again.
+            if (LevelManager.Instance != null)
+            {
+                LevelManager.Instance.RestartLevel();
+            }
+            else if (CoreGameManager.Instance != null)
+            {
+                CoreGameManager.Instance.ResumeGame();
+            }
 
-        Close();
+            Close();
+        });
     }
 
     private void OnHomeClicked()

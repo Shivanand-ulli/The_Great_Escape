@@ -187,9 +187,12 @@ public class LevelSelectionPopup : PopupBase
 
         OnLevelSelected?.Invoke(levelNumber);
 
-        Close();
-
-        SceneManager.LoadScene(gameSceneName);
+        // Natural break right before gameplay: Poki may show an ad, then the game scene opens.
+        PokiManager.CommercialBreak(() =>
+        {
+            Close();
+            SceneManager.LoadScene(gameSceneName);
+        });
     }
     
     private void OnCloseButtonClicked()

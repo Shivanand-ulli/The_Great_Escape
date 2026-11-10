@@ -433,6 +433,9 @@ public class BootstrapLoader : MonoBehaviour
         Debug.Log("[Bootstrap] All scenes loaded successfully!");
         UpdateLoadingProgress(0.95f);
 
+        // Tell Poki the game has finished loading.
+        PokiManager.GameLoadingFinished();
+
         // // Hide loading UI after all scenes are loaded
         if (loadingUI != null)
         {

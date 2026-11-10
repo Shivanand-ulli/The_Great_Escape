@@ -46,17 +46,21 @@ public class LevelFailedPopup : PopupBase
     {
         PlayClick();
 
-        // RestartLevel respawns the level and sets the game back to Playing at normal speed.
-        if (LevelManager.Instance != null)
+        // Natural break before gameplay starts again: Poki may show an ad here.
+        PokiManager.CommercialBreak(() =>
         {
-            LevelManager.Instance.RestartLevel();
-        }
-        else if (CoreGameManager.Instance != null)
-        {
-            CoreGameManager.Instance.StartGame();
-        }
+            // RestartLevel respawns the level and sets the game back to Playing at normal speed.
+            if (LevelManager.Instance != null)
+            {
+                LevelManager.Instance.RestartLevel();
+            }
+            else if (CoreGameManager.Instance != null)
+            {
+                CoreGameManager.Instance.StartGame();
+            }
 
-        Close();
+            Close();
+        });
     }
 
     private void OnHomeClicked()
