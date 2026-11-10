@@ -63,6 +63,7 @@ public class LevelCompletedPopup : PopupBase
     private void OnHomeClicked()
     {
         PlayClick();
+        Close();
         GoHome();
     }
 
