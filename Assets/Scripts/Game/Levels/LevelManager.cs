@@ -97,6 +97,10 @@ public class LevelManager : MonoBehaviour
         if (CoreGameManager.Instance != null) CoreGameManager.Instance.StartGame();
 
         OnLevelStarted?.Invoke(levelNumber);
+
+        // Hint popup at the start of every level (also on restart and next level).
+        if (PopupManager.Instance != null) PopupManager.Instance.ShowPopup<LevelHintPanel>();
+
         return true;
     }
 

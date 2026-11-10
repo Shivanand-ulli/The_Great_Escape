@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameHeaderPanelUI : MonoBehaviour
 {
     [SerializeField] private Button pauseButton;
+    [SerializeField] private Button hintButton;
 
     [SerializeField] private TextMeshProUGUI coinCount;
     [SerializeField] private TextMeshProUGUI levelId;
@@ -12,6 +13,7 @@ public class GameHeaderPanelUI : MonoBehaviour
     private void OnEnable()
     {
         if (pauseButton != null) pauseButton.onClick.AddListener(OnPauseButtonClicked);
+        if (hintButton != null) hintButton.onClick.AddListener(OnHintButtonClicked);
 
         // The level (and its CoinManager) is spawned after this header, so listen for changes
         // instead of reading once. Also show the current values if the level already exists.
@@ -36,6 +38,7 @@ public class GameHeaderPanelUI : MonoBehaviour
     private void OnDisable()
     {
         if (pauseButton != null) pauseButton.onClick.RemoveListener(OnPauseButtonClicked);
+        if (hintButton != null) hintButton.onClick.RemoveListener(OnHintButtonClicked);
         CoinManager.OnCoinsChanged -= UpdateCoinText;
         LevelManager.OnLevelStarted -= UpdateLevelId;
     }
@@ -48,6 +51,20 @@ public class GameHeaderPanelUI : MonoBehaviour
     private void UpdateCoinText(int collected, int total)
     {
         if (coinCount != null) coinCount.text = $"{collected} / {total}";
+    }
+
+    private void OnHintButtonClicked()
+    {
+        if (PopupManager.Instance == null) return;
+
+        // Same rules as pause: only while playing, and never stack a second hint popup.
+        CoreGameManager game = CoreGameManager.Instance;
+        if (game != null && !game.IsPlaying) return;
+        if (PopupManager.Instance.IsPopupOpen<LevelHintPanel>()) return;
+
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(Sfx.ButtonClick);
+
+        PopupManager.Instance.ShowPopup<LevelHintPanel>();
     }
 
     private void OnPauseButtonClicked()

@@ -700,6 +700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseButton: {fileID: 6099968133366249582}
+  hintButton: {fileID: 5512607018291985018}
   coinCount: {fileID: 7326407147308354642}
   levelId: {fileID: 88286369134779608}
 --- !u!1 &2713143129819755044

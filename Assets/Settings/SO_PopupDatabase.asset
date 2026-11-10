@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 7256520113215776781, guid: 762827b7896b66c4fbee04e0266bc16f, type: 3}
   - {fileID: 2722965764503763169, guid: b36db1840ca1b9a4492ea7ed93ab32a5, type: 3}
   - {fileID: 8190735682648504692, guid: 33b02e50d6d448049b0ef1280850f15e, type: 3}
+  - {fileID: 5491355255535351288, guid: 0c35fd45ba4d0b748a3ec32f06cc97c9, type: 3}
   popupBackgrounds:
   - tag: Default
     backgroundPrefab: {fileID: 4950547687903794698, guid: b7c9c053038dd1e4fb57c89f08b8f2dc, type: 3}
