@@ -53,6 +53,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -96,6 +99,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3762393045824385453}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -119,7 +123,8 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,7 +135,6 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
   m_Size: {x: 1.5450119, y: 1.9299269}
   m_EdgeRadius: 0
 --- !u!114 &6621250605210429455
@@ -145,9 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58616ac83d235494799b9ac7bc4a73b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelCoinText: {fileID: 0}
-  homeCoinText: {fileID: 0}
-  winPannel: {fileID: 0}
   exitDoor: {fileID: 8962154611336233479}
   exitParticleSystem: {fileID: 895814139994212095}
 --- !u!1 &8962154611336233479
@@ -199,6 +200,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -242,6 +246,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8557343231931039356}
     m_Modifications:
+    - target: {fileID: 3307793677524510355, guid: da8edda1dc7d06945a8f7db21aca6666, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4216729089065341571, guid: da8edda1dc7d06945a8f7db21aca6666, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5795797961122441103, guid: da8edda1dc7d06945a8f7db21aca6666, type: 3}
       propertyPath: m_Name
       value: Door_Sphere_Vfx
@@ -292,6 +304,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6123294922602725979, guid: da8edda1dc7d06945a8f7db21aca6666, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8197506594556816820, guid: da8edda1dc7d06945a8f7db21aca6666, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

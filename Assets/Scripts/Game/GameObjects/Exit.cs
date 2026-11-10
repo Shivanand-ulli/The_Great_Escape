@@ -1,73 +1,52 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using TMPro;
 
 public class Exit : MonoBehaviour
 {
-    KeyManager keyManager;
+    [SerializeField] private GameObject exitDoor;
+    [SerializeField] private ParticleSystem exitParticleSystem;
 
-    public TextMeshProUGUI levelCoinText;
-    public TextMeshProUGUI homeCoinText;
+    private KeyManager keyManager;
+    private bool levelEnded;
 
-    public GameObject winPannel;
-    public GameObject exitDoor;
-    public ParticleSystem exitParticleSystem;
-
-    void Start()
+    private void Start()
     {
-        keyManager = FindObjectOfType<KeyManager>();
+        keyManager = KeyManager.Instance;
+        if (keyManager == null) return;
+
+        keyManager.OnKeyCollected += ShowPanel;
     }
-    void OnTriggerEnter2D(Collider2D other)
+
+    private void OnDestroy()
     {
-        if (other.tag == "Player" && keyManager.isKeyCollected())
+        if (keyManager != null) keyManager.OnKeyCollected -= ShowPanel;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (levelEnded || !other.CompareTag("Player")) return;
+        if (keyManager == null || !keyManager.IsKeyCollected) return;
+
+        levelEnded = true;
+
+        int coins = 0;
+        CoinManager coinManager = CoinManager.Instance;
+        if (coinManager != null)
         {
-            UnlockNewLevel();
-            ShowWinPanel();
-        }
-    }
-
-    public void ShowWinPanel()
-    {
-        levelCoinText.text = CoinManager.instance.coinPoints.ToString();
-
-        // Save the current coin score to PlayerPrefs
-        int totalCoins = PlayerPrefs.GetInt("TotalCoins", 0);
-        totalCoins += CoinManager.instance.coinPoints;
-        PlayerPrefs.SetInt("TotalCoins", totalCoins);
-        PlayerPrefs.Save();
-        SoundManager.Instance.PlaySFX(Sfx.LevelWin);
-        // keyManager.textDisappear();
-        UIManager.instance.ShowWinPanel();
-    }
-
-
-    void UnlockNewLevel()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        int reachedIndex = PlayerPrefs.GetInt("ReachedIndex", 0); // Default to 0 if not set
-
-        // Update ReachedIndex only if currentSceneIndex is greater
-        if (currentSceneIndex > reachedIndex)
-        {
-            PlayerPrefs.SetInt("ReachedIndex", currentSceneIndex);
+            coinManager.CommitCoins();
+            coins = coinManager.coinPoints;
         }
 
-        // Unlock the next level
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1); // Default to 1
-        if (unlockedLevel <= currentSceneIndex)
-        {
-            PlayerPrefs.SetInt("UnlockedLevel", currentSceneIndex + 1);
-        }
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(Sfx.LevelWin);
 
-        PlayerPrefs.Save();
+        // Saves progress and sets the game state to Won.
+        if (LevelManager.Instance != null) LevelManager.Instance.LevelCompleted(coins, coins);
 
-        // // Update the button states to reflect the unlocked levels
-        // FindObjectOfType<LevelButtonController>().UpdateButtonStates();
+        if (PopupManager.Instance != null) PopupManager.Instance.ShowPopup<LevelCompletedPopup>();
     }
 
-    public void showPannel()
+    private void ShowPanel()
     {
-        exitDoor.SetActive(true);
-        exitParticleSystem.gameObject.SetActive(true);
+        if (exitDoor != null) exitDoor.SetActive(true);
+        if (exitParticleSystem != null) exitParticleSystem.Play();
     }
 }

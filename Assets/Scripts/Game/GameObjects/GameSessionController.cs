@@ -41,7 +41,7 @@ public class GameSessionController : MonoBehaviour
         {
             UIManager.instance.hintPannel.SetActive(true);
             playerLives = 3; // Reset lives only if coming from the start menu
-            CoinManager.instance.ResetScore(); // Reset the score when starting a new game
+            CoinManager.Instance.ResetScore(); // Reset the score when starting a new game
 
             // GemController.ResetGemPoints(0);
 
@@ -51,7 +51,7 @@ public class GameSessionController : MonoBehaviour
         {
             UIManager.instance.hintPannel.SetActive(true);
             playerLives = 3;
-            CoinManager.instance.ResetScore();
+            CoinManager.Instance.ResetScore();
 
             // GemController.ResetGemPoints(0);
             StartCoroutine(play());
@@ -97,7 +97,7 @@ public class GameSessionController : MonoBehaviour
         if(loosePannel != null)
         {
             UIManager.instance.ShowLoosePanel();
-            coinsCollected.text = CoinManager.instance.coinPoints.ToString();
+            coinsCollected.text = CoinManager.Instance.coinPoints.ToString();
             SoundManager.Instance.PlaySFX(Sfx.PlayerLose);
         }
 
