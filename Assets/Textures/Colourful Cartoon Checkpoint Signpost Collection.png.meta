@@ -1,0 +1,415 @@
+fileFormatVersion: 2
+guid: 1d7746a978e73e54e943f42ad0861599
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 173325285808196959
+    second: Colourful Cartoon Checkpoint Signpost Collection_0
+  - first:
+      213: -1625729711662029893
+    second: Colourful Cartoon Checkpoint Signpost Collection_1
+  - first:
+      213: 6814233590175661195
+    second: Colourful Cartoon Checkpoint Signpost Collection_2
+  - first:
+      213: -2224365834449803590
+    second: Colourful Cartoon Checkpoint Signpost Collection_3
+  - first:
+      213: 2974128659642721139
+    second: Colourful Cartoon Checkpoint Signpost Collection_4
+  - first:
+      213: -1327897471765225564
+    second: Colourful Cartoon Checkpoint Signpost Collection_5
+  - first:
+      213: 4214580689183452084
+    second: Colourful Cartoon Checkpoint Signpost Collection_6
+  - first:
+      213: -5315005755649457747
+    second: Colourful Cartoon Checkpoint Signpost Collection_7
+  - first:
+      213: -8227904129798917459
+    second: Colourful Cartoon Checkpoint Signpost Collection_8
+  - first:
+      213: -1756708255802435706
+    second: Colourful Cartoon Checkpoint Signpost Collection_9
+  - first:
+      213: -6217272197825602242
+    second: Colourful Cartoon Checkpoint Signpost Collection_10
+  - first:
+      213: -2588059009374328778
+    second: Colourful Cartoon Checkpoint Signpost Collection_11
+  - first:
+      213: -3756985565530078933
+    second: Colourful Cartoon Checkpoint Signpost Collection_12
+  - first:
+      213: 863935858325458533
+    second: Colourful Cartoon Checkpoint Signpost Collection_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: 12
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 333
+        width: 307
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5dc03bdd66c76200800000000000000
+      internalID: 173325285808196959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_1
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 333
+        width: 307
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb32693d07f3079e0800000000000000
+      internalID: -1625729711662029893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_2
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 333
+        width: 307
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8c74fec855019e50800000000000000
+      internalID: 6814233590175661195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_3
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 333
+        width: 261
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab6aa1b0f077121e0800000000000000
+      internalID: -2224365834449803590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_4
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 333
+        width: 334
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3732052224a364920800000000000000
+      internalID: 2974128659642721139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 307
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4af5b41f84c529de0800000000000000
+      internalID: -1327897471765225564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_6
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 1
+        width: 307
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bb20089ec23d7a30800000000000000
+      internalID: 4214580689183452084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_7
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 1
+        width: 307
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da18b53ec6e4d36b0800000000000000
+      internalID: -5315005755649457747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_8
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 1
+        width: 268
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da2bd5989cc90dd80800000000000000
+      internalID: -8227904129798917459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Colourful Cartoon Checkpoint Signpost Collection_9
+      rect:
+        serializedVersion: 2
+        x: 1214
+        y: 1
+        width: 321
+        height: 332
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68756e6162bee97e0800000000000000
+      internalID: -1756708255802435706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: dce00d8cd4b809143be9f0704d944f08
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Colourful Cartoon Checkpoint Signpost Collection_0: 173325285808196959
+      Colourful Cartoon Checkpoint Signpost Collection_1: -1625729711662029893
+      Colourful Cartoon Checkpoint Signpost Collection_2: 6814233590175661195
+      Colourful Cartoon Checkpoint Signpost Collection_3: -2224365834449803590
+      Colourful Cartoon Checkpoint Signpost Collection_4: 2974128659642721139
+      Colourful Cartoon Checkpoint Signpost Collection_5: -1327897471765225564
+      Colourful Cartoon Checkpoint Signpost Collection_6: 4214580689183452084
+      Colourful Cartoon Checkpoint Signpost Collection_7: -5315005755649457747
+      Colourful Cartoon Checkpoint Signpost Collection_8: -8227904129798917459
+      Colourful Cartoon Checkpoint Signpost Collection_9: -1756708255802435706
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

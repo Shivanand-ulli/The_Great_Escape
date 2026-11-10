@@ -19,14 +19,14 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        // Latest player wins: when a level is restarted the old player is only destroyed at the
+        // end of the frame, so a "first one wins" check would delete the new player.
+        instance = this;
+    }
+
+    void OnDestroy()
+    {
+        if (instance == this) instance = null;
     }
     void Start()
     {
@@ -130,7 +130,27 @@ public class PlayerController : MonoBehaviour
     IEnumerator CallCoroutine()
     {
         yield return new WaitForSeconds(2f);
-        GameSessionController.instance.ProcessOfPlayerDeath();
+
+        // LevelManager takes a life, then respawns the player or fails the level.
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.PlayerDied();
+        }
+    }
+
+    /// <summary>Brings the player back to life at this position (used after losing a life).</summary>
+    public void Respawn(Vector3 position)
+    {
+        transform.position = position;
+        myRb.linearVelocity = Vector2.zero;
+        myRb.gravityScale = startGravityScale;
+        moveInput = Vector2.zero;
+
+        // Back to the default animation state, clearing the Death trigger.
+        animator.Rebind();
+        animator.Update(0f);
+
+        isAlive = true;
     }
 
 
