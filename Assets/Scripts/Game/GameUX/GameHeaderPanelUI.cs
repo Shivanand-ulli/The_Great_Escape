@@ -9,6 +9,7 @@ public class GameHeaderPanelUI : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI coinCount;
     [SerializeField] private TextMeshProUGUI levelId;
+    [SerializeField] private TextMeshProUGUI livesText;
 
     private void OnEnable()
     {
@@ -19,6 +20,12 @@ public class GameHeaderPanelUI : MonoBehaviour
         // instead of reading once. Also show the current values if the level already exists.
         CoinManager.OnCoinsChanged += UpdateCoinText;
         LevelManager.OnLevelStarted += UpdateLevelId;
+        LevelManager.OnLivesChanged += UpdateLivesText;
+
+        if (LevelManager.Instance != null && LevelManager.Instance.MaxLives > 0)
+        {
+            UpdateLivesText(LevelManager.Instance.CurrentLives, LevelManager.Instance.MaxLives);
+        }
 
         if (CoinManager.Instance != null)
         {
@@ -41,6 +48,12 @@ public class GameHeaderPanelUI : MonoBehaviour
         if (hintButton != null) hintButton.onClick.RemoveListener(OnHintButtonClicked);
         CoinManager.OnCoinsChanged -= UpdateCoinText;
         LevelManager.OnLevelStarted -= UpdateLevelId;
+        LevelManager.OnLivesChanged -= UpdateLivesText;
+    }
+
+    private void UpdateLivesText(int current, int max)
+    {
+        if (livesText != null) livesText.text = $"{current} / {max}";
     }
 
     private void UpdateLevelId(int levelNumber)

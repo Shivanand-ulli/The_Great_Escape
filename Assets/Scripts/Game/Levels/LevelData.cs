@@ -10,9 +10,12 @@ public class LevelData
     [SerializeField] private string levelName;
     [Tooltip("Turn off to disable this level without removing it from the list.")]
     [SerializeField] private bool isActive = true;
+    [Tooltip("How many lives the player has in this level.")]
+    [SerializeField, Min(1)] private int lives = 3;
     [SerializeField] private GameObject levelPrefab;
 
     public string LevelId => levelId;
+    public int Lives => lives;
     public string LevelName => levelName;
     public bool IsActive => isActive;
     public GameObject LevelPrefab => levelPrefab;

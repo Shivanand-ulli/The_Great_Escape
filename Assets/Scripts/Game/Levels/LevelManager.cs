@@ -28,13 +28,19 @@ public class LevelManager : MonoBehaviour
     public static event Action<int> OnLevelFailed;
     /// <summary>Fired when LoadNextLevel is called after the last active level.</summary>
     public static event Action OnAllLevelsCompleted;
+    /// <summary>Fired with (currentLives, maxLives) when a level starts and whenever a life is lost.</summary>
+    public static event Action<int, int> OnLivesChanged;
 
     private GameObject currentLevelInstance;
     private int currentLevelNumber;
     private float levelTime;
     private bool isLevelRunning;
+    private int currentLives;
+    private int maxLives;
 
     public int CurrentLevelNumber => currentLevelNumber;
+    public int CurrentLives => currentLives;
+    public int MaxLives => maxLives;
     public float LevelTime => levelTime;
     public bool IsLevelRunning => isLevelRunning;
     public bool HasNextLevel => levelDataCollection != null && levelDataCollection.GetNextActiveLevelNumber(currentLevelNumber) > 0;
@@ -92,11 +98,28 @@ public class LevelManager : MonoBehaviour
         levelTime = 0f;
         isLevelRunning = true;
 
+        // Lives come from the LevelDataCollection. Checkpoints start fresh, with the player's
+        // spawn position as the default place to come back to.
+        maxLives = levelDataCollection.GetLevelLives(levelNumber);
+        currentLives = maxLives;
+
+        Checkpoint.ResetCheckpoints();
+        PlayerController player = PlayerController.instance;
+        if (player != null)
+        {
+            // Begin at the level's Start Point if it has one, otherwise where the player prefab sits.
+            LevelStartPoint startPoint = currentLevelInstance.GetComponentInChildren<LevelStartPoint>(true);
+            if (startPoint != null) player.transform.position = startPoint.transform.position;
+
+            Checkpoint.SetStartPosition(player.transform.position);
+        }
+
         if (PlayerDataManager.Instance != null) PlayerDataManager.Instance.CurrentLevel = levelNumber;
 
         if (CoreGameManager.Instance != null) CoreGameManager.Instance.StartGame();
 
         OnLevelStarted?.Invoke(levelNumber);
+        OnLivesChanged?.Invoke(currentLives, maxLives);
 
         // Hint popup at the start of every level (also on restart and next level).
         if (PopupManager.Instance != null) PopupManager.Instance.ShowPopup<LevelHintPanel>();
@@ -124,6 +147,33 @@ public class LevelManager : MonoBehaviour
         if (CoreGameManager.Instance != null) CoreGameManager.Instance.WinGame();
 
         OnLevelCompleted?.Invoke(currentLevelNumber);
+    }
+
+    /// <summary>
+    /// The player died. Takes a life and sends the player back to the last checkpoint.
+    /// With no lives left, the level is failed and the failed popup is shown.
+    /// </summary>
+    public void PlayerDied()
+    {
+        if (!isLevelRunning) return;
+
+        currentLives = Mathf.Max(0, currentLives - 1);
+        OnLivesChanged?.Invoke(currentLives, maxLives);
+
+        if (currentLives > 0)
+        {
+            PlayerController player = PlayerController.instance;
+            if (player != null)
+            {
+                player.Respawn(Checkpoint.GetRespawnPosition(player.transform.position));
+            }
+            return;
+        }
+
+        LevelFailed();
+
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(Sfx.PlayerLose);
+        if (PopupManager.Instance != null) PopupManager.Instance.ShowPopup<LevelFailedPopup>();
     }
 
     /// <summary>Player lost the level. Sets the game to Lost.</summary>

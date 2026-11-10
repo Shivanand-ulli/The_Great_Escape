@@ -31,6 +31,13 @@ public class LevelDataCollection : ScriptableObject
         return data != null ? data.LevelPrefab : null;
     }
 
+    /// <summary>Lives for this level as set in the list. Defaults to 3 if the level doesn't exist.</summary>
+    public int GetLevelLives(int levelNumber)
+    {
+        LevelData data = GetLevel(levelNumber);
+        return data != null ? Mathf.Max(1, data.Lives) : 3;
+    }
+
     /// <summary>Display name; falls back to "Level N" when no name is set.</summary>
     public string GetLevelName(int levelNumber)
     {
