@@ -1,46 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
+/// <summary>Per-level key state. Listeners (like the exit door) subscribe to OnKeyCollected.</summary>
 public class KeyManager : MonoBehaviour
 {
-     public GameObject popup;
-    bool keyCollected = false;
-    void Awake()
+    public static KeyManager Instance { get; private set; }
+
+    public event Action OnKeyCollected;
+
+    public bool IsKeyCollected { get; private set; }
+
+    private void Awake()
     {
-        popup.SetActive(false);
-    }
-    
-    public bool isKeyCollected()
-    {
-        return keyCollected;
+        Instance = this;
     }
 
-    public void collectKey()
+    private void OnDestroy()
     {
-        keyCollected = true;
+        if (Instance == this) Instance = null;
     }
 
-    public void textAppear()
+    public void CollectKey()
     {
-        popup.SetActive(true);
-    }
+        if (IsKeyCollected) return;
 
-    public void textDisappear()
-    {
-        popup.SetActive(false);
+        IsKeyCollected = true;
+        OnKeyCollected?.Invoke();
     }
-
-    public void PopUp()
-    {
-        textAppear();
-        StartCoroutine(popUpAppear(5f));
-    }
-
-    IEnumerator popUpAppear(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        textDisappear();
-    }
-
 }

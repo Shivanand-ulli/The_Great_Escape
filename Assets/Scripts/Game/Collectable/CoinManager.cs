@@ -1,121 +1,111 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
+/// <summary>
+/// Per-level coin counter. Coins register themselves, so nothing is searched for by tag.
+/// When every coin is collected the key is revealed.
+/// </summary>
 public class CoinManager : MonoBehaviour
 {
-     public static CoinManager instance;
-    public GameObject key;
-    int totalCoins;
-    int sumCoins;
-    int collectedCoins = 0;
+    public static CoinManager Instance;
 
-    [SerializeField] TextMeshProUGUI cointext;
-    public GameObject popUp;
+    /// <summary>
+    /// Fired with (collected, total) whenever the counts change. Static so UI that exists before
+    /// the level is spawned (like the game header) can subscribe without needing the instance.
+    /// </summary>
+    public static event Action<int, int> OnCoinsChanged;
 
+    [SerializeField] private GameObject key;
+    [SerializeField] private TextMeshProUGUI cointext;
+
+    /// <summary>Coins collected in this level run.</summary>
     public int coinPoints = 0;
-    private GameObject[] allCoins;
-    bool isHide = false;
 
-    void Awake()
+    private readonly List<Coin> coins = new List<Coin>();
+    private int collectedCoins;
+    private bool allCoinsHidden;
+    private bool coinsCommitted;
+
+    public int TotalCoins => coins.Count;
+    public int CollectedCoins => collectedCoins;
+
+    private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
     }
 
-    void Start()
+    private void OnDestroy()
     {
-        allCoins = GameObject.FindGameObjectsWithTag("Coin");
-        sumCoins = allCoins.Length;
-        print("Level total coins is :" + sumCoins);
-        key.SetActive(false);
-        popUp.SetActive(false);
-        cointext.text = coinPoints.ToString();
+        if (Instance == this) Instance = null;
+    }
+
+    private void Start()
+    {
+        if (key != null) key.SetActive(false);
+    }
+
+    /// <summary>Called by each Coin in its Start.</summary>
+    public void RegisterCoin(Coin coin)
+    {
+        coins.Add(coin);
+        NotifyChanged();
     }
 
     public void CollectCoin()
     {
         collectedCoins++;
-        if (collectedCoins >= sumCoins)
-        {
-            print("coinsCollected");
-            key.SetActive(true);
-            popUpSetActive();
-        }
-    }
-
-    public void coinScore()
-    {
         coinPoints++;
-        cointext.text = coinPoints.ToString();
+        NotifyChanged();
+
+        if (collectedCoins >= coins.Count) RevealKey();
     }
 
     public void ResetScore()
     {
         coinPoints = 0;
         collectedCoins = 0;
-        cointext.text = coinPoints.ToString();
+        coinsCommitted = false;
+        NotifyChanged();
     }
 
+    /// <summary>Hides every coin and counts them all as collected (used by power-ups).</summary>
     public void HideCoins()
     {
-        if (!isHide)
-        {
-            HideAllCoins();
-            isHide = true;
-        }
-    }
-    public void HideAllCoins()
-    {
-        allCoins = GameObject.FindGameObjectsWithTag("Coin");
+        if (allCoinsHidden) return;
+        allCoinsHidden = true;
 
-        foreach (GameObject coin in allCoins)
+        for (int i = 0; i < coins.Count; i++)
         {
-            coin.SetActive(false); // Hide the coins
+            if (coins[i] != null) coins[i].gameObject.SetActive(false);
         }
 
-        // Update coinPoints with the total number of coins hidden
-        coinPoints = sumCoins;
-        cointext.text = coinPoints.ToString();
-
-        // Save the hidden coins to PlayerPrefs
-        PlayerPrefs.SetInt("HiddenCoins", coinPoints);
-        PlayerPrefs.Save();
-
-        popUpSetActive();
-        key.SetActive(true);
+        collectedCoins = coins.Count;
+        coinPoints = coins.Count;
+        NotifyChanged();
+        RevealKey();
     }
 
-
-    public void SaveTotalCoins()
+    /// <summary>Adds this level's coins to the player's total. Safe to call more than once.</summary>
+    public void CommitCoins()
     {
-        totalCoins = PlayerPrefs.GetInt("TotalCoins", 0);
-        totalCoins += coinPoints;
-        PlayerPrefs.SetInt("TotalCoins", totalCoins);
-        PlayerPrefs.Save();
+        if (coinsCommitted) return;
+        coinsCommitted = true;
+
+        if (PlayerDataManager.Instance != null && coinPoints > 0)
+        {
+            PlayerDataManager.Instance.AddCoins(coinPoints);
+        }
     }
 
-    public void LoadTotalCoins(TextMeshProUGUI homeCoinText)
+    private void NotifyChanged()
     {
-        int totalCoins = PlayerPrefs.GetInt("TotalCoins", 0);
-        homeCoinText.text = totalCoins.ToString();
+        OnCoinsChanged?.Invoke(collectedCoins, coins.Count);
     }
 
-    void popUpSetActive()
+    private void RevealKey()
     {
-        popUp.SetActive(true);
-        StartCoroutine(HidePopupAfterDelay(5f));
-    }
-    IEnumerator HidePopupAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        popUp.SetActive(false);
+        if (key != null) key.SetActive(true);
     }
 }

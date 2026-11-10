@@ -1,35 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Key : MonoBehaviour
 {
-    
-    public Exit exit;
-    KeyManager keyManager;
-    public ParticleSystem keyVfx;
-    BoxCollider2D myBoxCollider;
+    [SerializeField] private ParticleSystem keyVfx;
 
-    void Start()
+    private BoxCollider2D myBoxCollider;
+    private GameObject visual;
+
+    private void Awake()
     {
-        keyManager = FindObjectOfType<KeyManager>();
         myBoxCollider = GetComponent<BoxCollider2D>();
-        exit = FindObjectOfType<Exit>();
+        if (transform.childCount > 0) visual = transform.GetChild(0).gameObject;
     }
 
-
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            keyManager.collectKey();
-            keyManager.PopUp();
-            print("Key PickedUp");
-            keyVfx.Play();
-            SoundManager.Instance.PlaySFX(Sfx.Collect);
-            transform.GetChild(0).gameObject.SetActive(false);
-            myBoxCollider.enabled = false; 
-            exit.showPannel();
-        }
+        if (!other.CompareTag("Player")) return;
+
+        // Switch the collider off first so the key can only be picked up once.
+        myBoxCollider.enabled = false;
+
+        // KeyManager tells the exit door to open.
+        if (KeyManager.Instance != null) KeyManager.Instance.CollectKey();
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(Sfx.Collect);
+        if (keyVfx != null) keyVfx.Play();
+        if (visual != null) visual.SetActive(false);
     }
 }

@@ -1,23 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public CoinManager coinManager;
-    bool wasCollected = false;
-    public ParticleSystem coinVfx;
-    void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] private ParticleSystem coinVfx;
+
+    private bool wasCollected;
+    private GameObject visual;
+
+    private void Start()
     {
-        if (other.CompareTag("Player") && !wasCollected)
-        {
-            wasCollected = true;
-            // coinSparkelEffect.Play();
-            CoinManager.instance.CollectCoin();
-            CoinManager.instance.coinScore();
-            SoundManager.Instance.PlaySFX(Sfx.Coin);
-            coinVfx.Play();
-            transform.GetChild(0).gameObject.SetActive(false);
-        }
-    }  
+        if (transform.childCount > 0) visual = transform.GetChild(0).gameObject;
+
+        if (CoinManager.Instance != null) CoinManager.Instance.RegisterCoin(this);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (wasCollected || !other.CompareTag("Player")) return;
+        wasCollected = true;
+
+        if (CoinManager.Instance != null) CoinManager.Instance.CollectCoin();
+        if (SoundManager.Instance != null) SoundManager.Instance.PlaySFX(Sfx.Coin);
+        if (coinVfx != null) coinVfx.Play();
+        if (visual != null) visual.SetActive(false);
+    }
 }

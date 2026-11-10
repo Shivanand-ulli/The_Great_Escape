@@ -29,7 +29,7 @@ public class GemController : MonoBehaviour
         gemPoints++;
         if (gemPoints == 3)
         {
-            CoinManager.instance.HideCoins(); // Call method in CoinManager to hide all coins
+            CoinManager.Instance.HideCoins(); // Call method in CoinManager to hide all coins
             ShowHint();
         }
         else
